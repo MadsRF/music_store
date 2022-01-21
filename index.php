@@ -1,22 +1,49 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+include_once __DIR__ . '/env.php';
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+// Initializing the static class with environment variables
+Env::setEnvironment();
 
-<body>
-    <h1>hello world</h1>
+// Starts the session for the user and sets SESSION variables when logging in.
+session_start();
 
-    <?php
+function getUrl($index_root = __DIR__)
+{
+  $url = strtok($_SERVER['REQUEST_URI'], '?'); // Get url without parameters
+  $url = rtrim($url, '/'); // Exclude the trailing slash from basedir if present
+  $url = substr($url, strpos($url, basename($index_root))); // Remove everything in the url which comes before the basedir
+  $urlPieces = explode('/', urldecode($url)); // Split the array by '/'
+  return $urlPieces;
+}
 
-    ?>
+$url = getUrl(__DIR__);
 
+if (count($url) === 1) {
+  array_push($url, 'home');
+}
 
+switch ([$url[1], $url[2] ?? null]) {
+  case ['home', null]:
+    include_once __DIR__ . '/public/home/home.php';
+    break;
 
-</body>
+  case ['login', 'user']:
+    include_once __DIR__ . '/public/login/user.php';
+    break;
 
-</html>
+  case ['login', 'admin']:
+    include_once __DIR__ . '/public/login/admin.php';
+    break;
+
+  case ['sign-up', null]:
+    include_once __DIR__ . '/public/sign-up/sign-up.php';
+    break;
+
+  case ['user-info', null]:
+    include_once __DIR__ . '/public/user-info/user-info.php';
+    break;
+
+  default:
+    echo 'Something went wrong.';
+    break;
+}

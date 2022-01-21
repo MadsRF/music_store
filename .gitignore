@@ -1,5 +1,9 @@
-# Files
+# FILES
+dev-env.php
+
+# FILE TYPES
 *.sql
 
-# Folders
-exam_description/
+# FOLDERS
+01_exam_description/
+vendor/
