@@ -1,14 +1,12 @@
 'use strict'
 
 import {
-    ROOT_URL
+    SIGNUP_ENDPOINT,
+    LOGIN_USER_ENDPOINT
 } from "../script.js";
 
 $(() => {
-    console.log('Sign-up is running');
-
-    const SIGNUP_ENDPOINT = ROOT_URL + 'api/customers';
-    const LOGIN_USER_ENDPOINT = ROOT_URL + 'login/user';
+    console.log('Sign-up script is running');
 
     $("#user_signup_form").submit((e) => {
         // prevents default actions from form

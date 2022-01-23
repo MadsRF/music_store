@@ -22,7 +22,18 @@
             <h1>Cart</h1>
         </header>
         <section>
-            <button id='checkout' type="submit">Checkout</button><br>
+
+            <?php if (isset($_SESSION["is_user"])) {
+                echo <<<HTML
+                    <button id="checkout" type="submit">Checkout</button> 
+                HTML;
+            } else {
+                echo <<<HTML
+                <h2>please log in first</h2>
+                HTML;
+            }
+            ?>
+
             <table id="tracks_to_buy"></table>
         </section>
     </main>

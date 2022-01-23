@@ -1,17 +1,14 @@
 'use strict'
 
 import {
-    ROOT_URL
+     GET_USER_INFO_ENDPOINT,
+     CART_ENDPOINT,
+     INVOICE_ENDPOINT, 
+     HOME_ENDPOINT
 } from "../script.js";
 
 $(() => {
     console.log('Checkout script is running');
-
-
-    const GET_USER_INFO = ROOT_URL + 'api/customers/?id=current';
-    const CART_ENDPOINT = ROOT_URL + 'api/cart';
-    const INVOICE_ENDPOINT = ROOT_URL + 'api/invoices';
-    const HOME_ENDPOINT = ROOT_URL + 'home';
 
 
     /*-----------------------------------------------------------------*/
@@ -37,7 +34,7 @@ $(() => {
             trackList.push(res);
 
             $.ajax({
-                url: `${GET_USER_INFO}`,
+                url: `${GET_USER_INFO_ENDPOINT}`,
                 type: 'GET',
                 dataType: 'json',
                 statusCode: {

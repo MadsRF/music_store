@@ -22,8 +22,8 @@
             <h1>User login</h1>
         </header>
         <form id="user_login_form" action="#">
-            <input type="text" name="username" id="username" />
-            <input type="password" name="password" id="password" />
+            <input type="text" name="username" placeholder="Email" id="username" />
+            <input type="password" name="password" placeholder="Password" id="password" />
             <input type="submit" value="Sign in" />
         </form>
     </main>

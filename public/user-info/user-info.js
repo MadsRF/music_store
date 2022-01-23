@@ -1,17 +1,15 @@
 'use strict'
 
 import {
-    ROOT_URL
+    GET_USER_INFO_ENDPOINT,
+    UPDATE_USER_INFO_ENDPOINT
 } from "../script.js";
 
 $(() => {
     console.log('user-info script is running');
 
-    const GET_USER_INFO = ROOT_URL + 'api/customers/?id=current';
-    const UPDATE_USER_INFO = ROOT_URL + 'api/customers';
-
     $.ajax({
-        url: `${GET_USER_INFO}`,
+        url: `${GET_USER_INFO_ENDPOINT}`,
         type: 'GET',
         dataType: 'json',
         statusCode: {
@@ -78,10 +76,10 @@ $(() => {
         //input.CustomerId = parseInt(input.CustomerId);
         console.log('input', input);
 
-        console.log('UPDATE_USER_INFO', UPDATE_USER_INFO);
+        console.log('UPDATE_USER_INFO_ENDPOINT', UPDATE_USER_INFO_ENDPOINT);
         // EX: http://localhost/exam/api/customers
         $.ajax({
-            url: UPDATE_USER_INFO,
+            url: UPDATE_USER_INFO_ENDPOINT,
             type: 'POST',
             dataType: 'json',
             data: input,

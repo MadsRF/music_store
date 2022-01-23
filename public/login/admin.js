@@ -1,14 +1,12 @@
 'use strict'
 
 import {
-    ROOT_URL
+    LOGIN_ADMIN_ENDPOINT,
+    HOME_ENDPOINT
 } from "../script.js";
 
 $(() => {
-    console.log('Admin script is running');
-
-    const LOGIN_ADMIN_ENDPOINT = ROOT_URL + 'api/login/admin';
-    const HOME_ENDPOINT = ROOT_URL + 'home';
+    console.log('Admin login script is running');
 
     $("#admin_login_form").submit((e) => {
         // prevents default actions from form

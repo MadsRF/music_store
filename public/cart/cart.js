@@ -1,16 +1,13 @@
 'use strict'
 
 import {
-    ROOT_URL
+    CART_ENDPOINT,
+    TRACK_ENDPOINT,
+    CHECKOUT_ENDPOINT
 } from "../script.js";
 
 $(() => {
     console.log('Cart script is running');
-
-    const CART_ENDPOINT = ROOT_URL + 'api/cart';
-    const TRACK_ENDPOINT = ROOT_URL + 'api/tracks';
-    const CHECKOUT = ROOT_URL + 'checkout';
-
 
     /*-----------------------------------------------------------------*/
     // GET CART DATA AND CREATE TABLE
@@ -18,6 +15,7 @@ $(() => {
 
     $.ajax({
         url: `${CART_ENDPOINT}`,
+        type: 'GET',
         dataType: 'json',
         statusCode: {
             500: (e) => {
@@ -124,9 +122,8 @@ $(() => {
 
     // go to checkout
     $(document).on('click', '#checkout', (e) => {
-        e.preventDefault();
-        window.location.href = CHECKOUT;
-
+        //e.preventDefault();
+        window.location.href = CHECKOUT_ENDPOINT;
     });
 
 })

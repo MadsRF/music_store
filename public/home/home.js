@@ -2,18 +2,16 @@
 'use strict'
 
 import {
-    ROOT_URL
+    SEARCH_ENDPOINT,
+    ALBUM_ENDPOINT,
+    TRACK_ENDPOINT,
+    CART_ENDPOINT
 } from "../script.js";
 
 // shorthand declaration of jQuery instead of .ready()
 $(() => {
     console.log('Home script is running');
 
-    const SEARCH_ENDPOINT = ROOT_URL + 'api/searches';
-    const ARTIST_ENDPOINT = ROOT_URL + 'api/artists';
-    const ALBUM_ENDPOINT = ROOT_URL + 'api/albums';
-    const TRACK_ENDPOINT = ROOT_URL + 'api/tracks';
-    const CART_ENDPOINT = ROOT_URL + 'api/cart';
 
     let SELECT_SEARCH = 'track'; // default value
 

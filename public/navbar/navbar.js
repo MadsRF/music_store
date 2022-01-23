@@ -1,14 +1,12 @@
 'use strict'
 
 import {
-    ROOT_URL
+    LOGOUT_ENDPOINT,
+    HOME_ENDPOINT
 } from "../script.js";
 
 $(() => {
     console.log('Navbar script is running');
-
-    const LOGOUT_ENDPOINT = ROOT_URL + 'api/logout';
-    const HOME_ENDPOINT = ROOT_URL + 'home';
 
     const logout = () => {
         console.log('logout');
