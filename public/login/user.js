@@ -27,8 +27,8 @@ $(() => {
         $.ajax({
             url: LOGIN_USER_ENDPOINT,
             type: "POST",
-            //data: { username: input["username"], password: input["password"] },
-            data: { username: "luisg@embraer.com.br", password: "customer" }, //TEMP
+            data: { username: input["username"], password: input["password"] },
+            //data: { username: "luisg@embraer.com.br", password: "customer" }, //TEMP
             statusCode: {
                 500: (e) => {
                     console.log(e);
