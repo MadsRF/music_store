@@ -1,0 +1,41 @@
+@import '../global.css';
+
+
+/* TABLE */
+#tracks_to_buy {
+    /*sizing and alignment*/
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#tracks_to_buy th {
+    /*colors*/
+
+    /*sizing and alignment*/
+    text-transform: uppercase;
+    text-align: center;
+    padding: 0.5rem;
+}
+
+#tracks_to_buy td {
+    /*sizing and alignment*/
+    text-align: center;
+    height: 5rem;
+}
+
+#tracks_to_buy table td {
+    /*sizing and alignment*/
+    text-align: center;
+    height: 5rem;
+}
+
+#tracks_to_buy tr:nth-child(odd) {
+    /*colors*/
+    background-color: #f2f2f2;
+}
+
+#tracks_to_buy tr:nth-child(even) {
+    /*colors*/
+    background-color: #ddd;
+}
+

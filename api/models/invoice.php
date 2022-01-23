@@ -24,6 +24,9 @@ class Invoice extends MusicDB
     }
 
     try {
+      // Empty cart session when customer is buying 
+      $_SESSION['cart'] = '';
+
       // beginTransaction from php - instance are not committed until you end the transaction
       $this->db->beginTransaction();
 
@@ -34,9 +37,9 @@ class Invoice extends MusicDB
       $tracksSumPrice = $this->getOne($sumPriceQuery)['sum'];
 
       $invoiceQuery = <<< SQL
-        INSERT INTO invoice
-          (CustomerId, InvoiceDate, BillingAddress, BillingCity,
-            BillingState, BillingCountry, BillingPostalCode, Total)
+        INSERT INTO `invoice` (
+          `CustomerId`, `InvoiceDate`, `BillingAddress`, `BillingCity`,
+            `BillingState`, `BillingCountry`, `BillingPostalCode`, `Total`)
         VALUES
         (:customer_id, NOW(), :address, :city, :state, :country, :postal_code, :total);
         SQL;
@@ -55,7 +58,7 @@ class Invoice extends MusicDB
 
       $invoice_id = $this->db->lastInsertId();
 
-      $invoice_line_query = <<<SQL
+      $invoiceLineQuery = <<<SQL
         INSERT INTO invoiceline (InvoiceId, TrackId, UnitPrice, Quantity)
         SELECT :invoice_id, track.trackId, track.UnitPrice, 1
         FROM track
@@ -64,7 +67,7 @@ class Invoice extends MusicDB
 
       $params = ['invoice_id' => $invoice_id];
 
-      $this->create($invoice_line_query, $params);
+      $this->create($invoiceLineQuery, $params);
       $this->db->commit();
     } catch (Exception $e) {
       return $this->db->rollBack();

@@ -153,7 +153,6 @@ abstract class Endpoint
         return http_response_code(200);
     }
 
-
     protected function badRequest()
     {
         return http_response_code(400);

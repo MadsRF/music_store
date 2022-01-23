@@ -115,8 +115,6 @@ footer {
     cursor: pointer;
 }
 
-
-
 /* FORM */
 form {
     width: 50%;
@@ -125,8 +123,48 @@ form {
     justify-self: center;
     box-shadow: black 0.5%;
 }
+
 /* INPUT class */
 input {
     width: 100%;
     margin: 0.5rem;
+}
+
+
+/* TABLET: bigger resolution than iphone 6/7/8 mobile layout 414x736px */
+
+@media screen and (min-width: 415px) {
+    body {
+        background-color: gray;
+    }
+
+    #search_option {
+        /*sizing and alignment*/
+        max-width: 10rem;
+        margin-left: 7.5%;
+    }
+
+    #searchbar {
+        /*sizing and alignment*/
+        width: 85%;
+        margin-left: 7.5%;
+    }
+
+    table {
+        /*sizing and alignment*/
+        font-size: 1.2rem;
+    }
+}
+
+/* COMPUTER SCREEN: bigger resolution than ipad tablet layout 768x1024px (horizontal) */
+
+@media screen and (min-width: 1024px) {
+    body {
+        background-color: black;
+    }
+
+    table {
+        /*sizing and alignment*/
+        font-size: 1.5rem;
+    }
 }

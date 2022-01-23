@@ -38,8 +38,8 @@ function navbar()
                 <header>
                     <ul>
                         <li><a href="$homeRoute">$home</a></li>
-                        <li><a href="$userInfoRoute">$userInfo</a></li>
                         <li><a href="$cartRoute">$cart</a></li>
+                        <li><a href="$userInfoRoute">$userInfo</a></li>
                         <li><a id="logout">$logout</a></li>
                     </ul>
                 </header>
@@ -64,7 +64,8 @@ function navbar()
             <<<HTML
                 <header>
                     <ul>
-                        <li><a href="$homeRoute">$home</a></li>          
+                        <li><a href="$homeRoute">$home</a></li>       
+                        <li><a href="$cartRoute">$cart</a></li>   
                         <li><a href="$adminLoginRoute">$admin</a></li>
                         <li><a href="$userLoginRoute">$user</a></li>
                         <li><a href="$signupRoute">$signup</a></li>

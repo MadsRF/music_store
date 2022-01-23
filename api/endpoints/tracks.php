@@ -53,18 +53,17 @@ class Tracks extends Endpoint
     return $this->notFound();
   }
 
+  // CREATE AND UPDATE
   protected function handlePost()
   {
     if (!$this->adminAllowed()) return;
+    $putRequest = isset($this->body['TrackId']);
 
-    $is_put_request = isset($this->body['TrackId']);
-
-    if ($is_put_request) {
+    if ($putRequest) {
       $results = $this->track->updateTrack($this->body);
     } else {
       $results = $this->track->createTrack($this->body);
     }
-
     echo json_encode($results);
     return;
   }
@@ -74,10 +73,10 @@ class Tracks extends Endpoint
     return $this->handleNotAllowed();
   }
 
+  // DELETE
   protected function handleDelete()
   {
     if (!$this->adminAllowed()) return;
-
     $track_id = intval($this->pathParams[$this::COLLECTION]);
     $results = $this->track->deleteTrack($track_id);
     echo $results;

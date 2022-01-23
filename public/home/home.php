@@ -29,9 +29,9 @@
 
         <section>
             <select id="search_option" name="search_option">
+                <option value="track">Track</option>
                 <option value="artist">Artist</option>
                 <option value="album">Album</option>
-                <option value="track">Track</option>
             </select>
 
             <input type="text" minlength="1" maxlength="50" id="searchbar" value="" placeholder="Search..." required autocomplete="off">

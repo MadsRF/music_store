@@ -15,22 +15,25 @@ class Invoices extends Endpoint
     $this->handleRequest(true);
   }
 
+  // READ
   protected function handleGet()
   {
-    // invoices/
+    // get all invoices EX: .../invoices/
     if ($this->collectionRequest()) {
       return $this->notFound();
     }
 
-    // invoices/{id}/
+    // Get one invoice EX: .../invoices/{id}/
     if ($this->ResourceRequest()) {
       $invoiceId = intval($this->pathParams[$this::COLLECTION]);
       $result = $this->invoice->getInvoice($invoiceId);
       echo json_encode($result);
+      return;
     }
     return $this->notFound();
   }
 
+  // CREATE
   protected function handlePost()
   {
     $customerId = $this->body['customerId'];
@@ -42,11 +45,13 @@ class Invoices extends Endpoint
     return $this->noAuthResponse();
   }
 
+  // UPDATE
   protected function handlePut()
   {
     return $this->handleNotAllowed();
   }
 
+  // DELETE
   protected function handleDelete()
   {
     return $this->handleNotAllowed();

@@ -13,8 +13,9 @@ $(() => {
     const ARTIST_ENDPOINT = ROOT_URL + 'api/artists';
     const ALBUM_ENDPOINT = ROOT_URL + 'api/albums';
     const TRACK_ENDPOINT = ROOT_URL + 'api/tracks';
+    const CART_ENDPOINT = ROOT_URL + 'api/cart';
 
-    let SELECT_SEARCH = 'artist'; // default value
+    let SELECT_SEARCH = 'track'; // default value
 
     /*-----------------------------------------------------------------*/
     // LISTENERS SEARCH INPUT
@@ -22,6 +23,7 @@ $(() => {
 
     // getting the value from searchbar input on typing
     $('#searchbar').keyup((e) => {
+        e.preventDefault();
         // since arrow func. can't use the 'this' keyword to get value, has to you currentTarget 
         const $this = $(e.currentTarget);
         const inputValue = $($this).val();
@@ -285,7 +287,7 @@ $(() => {
             });
         }
 
-        // EX: http://localhost/exam/api/tracks/1
+        // EX: http://localhost/exam/api/tracks/id
         if (SELECT_SEARCH === 'track') {
             console.log('getDetails, track');
             $.ajax({
@@ -306,25 +308,29 @@ $(() => {
                     };
                     $('#descriptive_list_info').append(
                         `
-                        <h2 id="trackTitle">${res.trackTitle}</h2><br>
-                        <dt>Album</dt>
-                        <dd id='albumName'>- ${res.albumName}</dd>
-                        <dt>Artist</dt>
-                        <dd id='artistName'>- ${res.artistName}</dd>
-                        <dt>Track composer</dt>
-                        <dd id='trackComposer'>- ${res.trackComposer}</dd>
-                        <dt>Genre</dt>
-                        <dd id='trackGenre'>- ${res.trackGenre}</dd>
-                        <dt>Track media type</dt>
-                        <dd id='trackMediaType'>- ${res.trackMediaType}</dd>
-                        <dt>Track price</dt>
-                        <dd id='trackPrice'>- ${res.trackPrice}</dd>
-                        <dt>Track size</dt>
-                        <dd id='trackSize'>- ${bytesToSize(res.trackSize)}</dd>
-                        <dt>Track time</dt>
-                        <dd id='trackTime'>- ${millisToMinutesAndSeconds(res.trackTime)} min.</dd>
+                        <form>
+                            <h2 id="trackTitle">${res.trackTitle}</h2><br>
+                            <dt>Album</dt>
+                            <dd id='albumName'>- ${res.albumName}</dd>
+                            <dt>Artist</dt>
+                            <dd id='artistName'>- ${res.artistName}</dd>
+                            <dt>Track composer</dt>
+                            <dd id='trackComposer'>- ${res.trackComposer}</dd>
+                            <dt>Genre</dt>
+                            <dd id='trackGenre'>- ${res.trackGenre}</dd>
+                            <dt>Track media type</dt>
+                            <dd id='trackMediaType'>- ${res.trackMediaType}</dd>
+                            <dt>Track price</dt>
+                            <dd id='trackPrice'>- ${res.trackPrice}</dd>
+                            <dt>Track size</dt>
+                            <dd id='trackSize'>- ${bytesToSize(res.trackSize)}</dd>
+                            <dt>Track time</dt>
+                            <dd id='trackTime'>- ${millisToMinutesAndSeconds(res.trackTime)} min.</dd>
+                            <button id='addTrackToCart' type="submit" value="${res.trackId}">Add to cart</button><br>
+                        </form>
                         `
                     );
+
                 },
                 error: (error) => {
                     console.log(error);
@@ -351,6 +357,33 @@ $(() => {
         SELECT_SEARCH = $(e.currentTarget).val();
         $('#table_search_result').empty();
         $('#searchbar').val('');
+    });
+
+
+    // event listener for adding tracks to cart
+    $(document).on('click', '#addTrackToCart', (e) => {
+        e.preventDefault();
+        const $this = $(e.currentTarget);
+        const trackId = $($this).val();
+        console.log('trackId', trackId);
+        console.log(CART_ENDPOINT);
+
+        $.ajax({
+            method: 'POST',
+            url: `${CART_ENDPOINT}`,
+            dataType: 'json',
+            data: {trackId: trackId},
+            success: (res) => {
+                console.log('buy track - res', res);
+                alert('track added to cart');
+
+            }, error: (error) => {
+                console.log(error);
+                alert('we are currently updating our servers. try again later');
+            }
+
+        })
+
     });
 
     /*-----------------------------------------------------------------*/

@@ -68,7 +68,7 @@ class MusicDB
       echo "ERROR fetching: \n$e";
       return false;
     } finally {
-      $this->dbDisconnect();
+      //$this->dbDisconnect();
     }
   }
 
@@ -92,7 +92,7 @@ class MusicDB
       echo "ERROR fetching: \n$e";
     } finally {
       if ($reuse_params) $this->db->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
-      $this->dbDisconnect();
+      //$this->dbDisconnect();
     }
   }
 

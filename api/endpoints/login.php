@@ -10,11 +10,8 @@ class Login extends Endpoint
 {
 
   private const COLLECTION =  'login';
-  private const SUBCOLLECTION = '';
-
   private const CUSTOMER = 'customers';
   private const ADMIN = 'admin';
-
 
   public function __construct()
   {

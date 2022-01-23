@@ -7,6 +7,7 @@ include_once __DIR__ . '/endpoints/invoices.php';
 include_once __DIR__ . '/endpoints/customers.php';
 include_once __DIR__ . '/endpoints/searches.php';
 include_once __DIR__ . '/endpoints/login.php';
+include_once __DIR__ . '/endpoints/cart.php';
 
 // OTHER
 include_once __DIR__ . '/env/env.php';
@@ -47,6 +48,9 @@ switch ($url[1]) {
         break;
     case 'customers':
         new Customers();
+        break;
+    case 'cart':
+        new Cart();
         break;
     default:
         echo 'NO ENDPOINT FOUND - CHECK IF ENDPOINT IS CORRECT',  '<br>';

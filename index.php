@@ -43,7 +43,15 @@ switch ([$url[1], $url[2] ?? null]) {
     include_once __DIR__ . '/public/user-info/user-info.php';
     break;
 
+  case ['cart', null]:
+    include_once __DIR__ . '/public/cart/cart.php';
+    break;
+
+  case ['checkout', null]:
+    include_once __DIR__ . '/public/checkout/checkout.php';
+    break;
+
   default:
-    echo 'Something went wrong.';
+    echo 'SOMETHING WENT WRONG. CHECK IF URL IS CORRECT';
     break;
 }
