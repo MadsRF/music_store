@@ -7,7 +7,7 @@ import {
 $(() => {
     console.log('User script is running');
 
-    const LOGIN_USER_ENDPOINT = ROOT_URL + 'api/login/customers';
+    const LOGIN_USER_ENDPOINT = ROOT_URL + '/api/login/customers';
     const HOME_ENDPOINT = ROOT_URL + 'home';
 
     $("#user_login_form").submit((e) => {
@@ -27,8 +27,8 @@ $(() => {
         $.ajax({
             url: LOGIN_USER_ENDPOINT,
             type: "POST",
-            data: { username: input["username"], password: input["password"] },
-            //data: { username: "luisg@embraer.com.br", password: "customer" }, //TEMP
+            //data: { username: input["username"], password: input["password"] },
+            data: { username: "luisg@embraer.com.br", password: "customer" }, //TEMP
             statusCode: {
                 500: (e) => {
                     console.log(e);

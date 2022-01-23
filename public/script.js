@@ -2,6 +2,6 @@
 'use strict'
 
 export const ROOT_URL = ""; // heroku
-// export const ROOT_URL = "http://localhost/exam/"; // local
+// export const ROOT_URL = "http://localhost/exam"; // local
 
 
