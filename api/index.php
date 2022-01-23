@@ -19,6 +19,7 @@ Env::setEnvironment(__DIR__);
 // Sets the headers of the responses. only allow json
 header('Content-Type: application/json');
 header('Accept-version: v1');
+header("Access-Control-Allow-Origin: ". ENV::$HOST);
 
 $url = getUrl();
 
