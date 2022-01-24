@@ -51,6 +51,10 @@ switch ([$url[1], $url[2] ?? null]) {
     include_once __DIR__ . '/public/checkout/checkout.php';
     break;
 
+  case ['admin-music', null]:
+    include_once __DIR__ . '/public/admin-music/admin-music.php';
+    break;
+
   default:
     echo 'SOMETHING WENT WRONG. CHECK IF URL IS CORRECT';
     break;

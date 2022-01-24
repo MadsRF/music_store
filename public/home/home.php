@@ -34,7 +34,7 @@
                 <option value="album">Album</option>
             </select>
 
-            <input type="text" minlength="1" maxlength="50" id="searchbar" value="" placeholder="Search..." required autocomplete="off">
+            <input type="text" minlength="1" maxlength="50" id="search-bar" value="" placeholder="Search..." required autocomplete="off">
             <table id="table_search_result"></table>
         </section>
 

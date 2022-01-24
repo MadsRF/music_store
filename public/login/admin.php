@@ -12,11 +12,13 @@
 </head>
 
 <body>
+    <!-- navbar -->
     <?php
     include_once __DIR__ . '/../navbar/navbar.php';
     echo navbar();
     ?>
-
+    
+    <!-- content -->
     <main>
         <header>
             <h1>Admin login</h1>
@@ -27,7 +29,8 @@
             <input type="submit" value="Sign in" />
         </form>
     </main>
-
+    
+    <!-- footer -->
     <?php
     include_once __DIR__ . '/../footer/footer.php';
     echo footer();

@@ -18,12 +18,12 @@ $(() => {
         type: 'GET',
         dataType: 'json',
         statusCode: {
-            500: (e) => {
-                console.log(e);
+            500: (error) => {
+                console.log(error);
                 alert('Problems retrieving data from API');
             },
-            404: (e) => {
-                console.log(e);
+            404: (error) => {
+                console.log(error);
                 alert('Page not found');
             },
         },
@@ -78,13 +78,8 @@ $(() => {
                         `
                     );
 
-                    // loop over results and print to table
                     let rows = res.map(item => {
-                        // create a clone of the table tbody tr to create dynamic row (only appends once)
                         let $clone = $('#tracks_to_buy tbody tr').clone();
-
-                        // $clone.data('id', item.id);
-                        console.log('foo', item.albumName);
 
                         $clone.find('#trackTitle').text(item.trackTitle);
                         $clone.find('#albumName').text(item.albumName);
@@ -93,27 +88,20 @@ $(() => {
                         $clone.find('#trackGenre').text(item.trackGenre);
                         $clone.find('#trackMediaType').text(item.trackMediaType);
                         $clone.find('#trackPrice').text(item.trackPrice);
+                        
                         return $clone;
-
                     });
-
-                    //appends to table
                     $('#tracks_to_buy tbody').empty().append(rows);
-
-
-
 
                 }, error: (error) => {
                     console.log(error);
                     alert('Something went wrong getting info. Try again later');
                 }
             })
-
         }, error: (error) => {
             console.log(error);
             alert('Something went wrong getting info. Try again later');
         }
-
     })
 
     /*-----------------------------------------------------------------*/
@@ -122,7 +110,6 @@ $(() => {
 
     // go to checkout
     $(document).on('click', '#checkout', (e) => {
-        //e.preventDefault();
         window.location.href = CHECKOUT_ENDPOINT;
     });
 

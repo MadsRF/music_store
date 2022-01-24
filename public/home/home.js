@@ -19,28 +19,28 @@ $(() => {
     // LISTENERS SEARCH INPUT
     /*-----------------------------------------------------------------*/
 
-    // getting the value from searchbar input on typing
-    $('#searchbar').keyup((e) => {
+    // getting the value from search-bar input on typing
+    $('#search-bar').keyup((e) => {
         e.preventDefault();
         // since arrow func. can't use the 'this' keyword to get value, has to you currentTarget 
         const $this = $(e.currentTarget);
-        const inputValue = $($this).val();
-        console.log('inputValue', inputValue);
+        const searchVal = $($this).val();
+        console.log('searchVal', searchVal);
 
         // check if any input. if not error because query is empty
-        if (inputValue) {
+        if (searchVal) {
 
             $.ajax({
-                url: `${SEARCH_ENDPOINT}?val=${inputValue}`,
-                type: 'GET', // setting the http method
-                dataType: 'json', // added data type
+                url: `${SEARCH_ENDPOINT}?val=${searchVal}`,
+                type: 'GET',
+                dataType: 'json',
                 statusCode: {
-                    500: (e) => {
-                        console.log(e);
+                    500: (error) => {
+                        console.log(error);
                         alert('Problems retrieving data from API');
                     },
-                    404: (e) => {
-                        console.log(e);
+                    404: (error) => {
+                        console.log(error);
                         alert('Page not found');
                     },
                 },
@@ -69,26 +69,22 @@ $(() => {
         }
     }).keyup()
 
-
     /*-----------------------------------------------------------------*/
     // CREATE TABLES
     /*-----------------------------------------------------------------*/
 
     const artistTable = (list) => {
-
         $('#table_search_result')
             .empty()
             .append(
                 `<thead>
                 <tr>
-                    <th>type</th>
                     <th>Artist name</th>
                     <th>more</th>
                 </tr>
             </thead>    
             <tbody>
                 <tr>
-                    <td id='type'></td>
                     <td id='artistName'></td>
                     <td id='button'></td>
                 </tr>
@@ -102,14 +98,11 @@ $(() => {
             let $clone = $('#table_search_result tbody tr').clone();
 
             $clone.data('id', item.id);
-            $clone.find('#type').text(item.type);
             $clone.find('#artistName').text(item.artistName);
 
             // finds button and inserts html
             $clone.find('#button').html(`<button id='show_more_info' type='button'>info</button><br>`);
-
             return $clone;
-
         });
         //appends to table
         $('#table_search_result tbody').empty().append(rows);
@@ -117,66 +110,51 @@ $(() => {
     }
 
     const albumTable = (list) => {
-
         $('#table_search_result')
             .empty()
             .append(
                 `<thead>
-            <tr>
-                <th>type</th>
-                <th>Artist name</th>
-                <th>Album name</th>
-                <th>more</th>
-            </tr>
-        </thead>    
-        <tbody>
-            <tr>
-                <td id='type'></td>
-                <td id='artistName'></td>
-                <td id='albumName'></td>
-                <td id='button'></td>
-            </tr>
-        </tbody>`
+                    <tr>
+                        <th>Artist name</th>
+                        <th>Album name</th>
+                        <th>more</th>
+                    </tr>
+                </thead>    
+                <tbody>
+                    <tr>
+                        <td id='artistName'></td>
+                        <td id='albumName'></td>
+                        <td id='button'></td>
+                    </tr>
+                </tbody>`
             );
 
-        // loop over results and print to table
         let rows = list.map(item => {
-
-            // create a clone of the table tbody tr to create dynamic row (only appends once)
             let $clone = $('#table_search_result tbody tr').clone();
-
             $clone.data('id', item.id);
-            $clone.find('#type').text(item.type);
             $clone.find('#artistName').text(item.artistName);
             $clone.find('#albumName').text(item.albumName);
 
-            // finds button and inserts html
             $clone.find('#button').html(`<button id='show_more_info' type='button'>info</button><br>`);
-
             return $clone;
-
         });
-        //appends to table
         $('#table_search_result tbody').empty().append(rows);
-
     }
-    const trackTable = (list) => {
 
+    const trackTable = (list) => {
         $('#table_search_result')
             .empty()
             .append(
                 `<thead>
                 <tr>
-                    <th>type</th>
                     <th>Artist name</th>
                     <th>Album name</th>
                     <th>Track name</th>
-                    <th>more</th>
+                    <th>More</th>
                 </tr>
             </thead>    
             <tbody>
                 <tr>
-                    <td id='type'></td>
                     <td id='artistName'></td>
                     <td id='albumName'></td>
                     <td id='trackName'></td>
@@ -185,35 +163,35 @@ $(() => {
             </tbody>`
             );
 
-        // loop over results and print to table
         let rows = list.map(item => {
-
-            // create a clone of the table tbody tr to create dynamic row (only appends once)
             let $clone = $('#table_search_result tbody tr').clone();
 
             $clone.data('id', item.id);
-            $clone.find('#type').text(item.type);
             $clone.find('#artistName').text(item.artistName);
             $clone.find('#albumName').text(item.albumName);
             $clone.find('#trackName').text(item.trackName);
 
-            // finds button and inserts html
             $clone.find('#button').html(`<button id='show_more_info' type='button'>info</button><br>`);
-
             return $clone;
-
         });
-        //appends to table
         $('#table_search_result tbody').empty().append(rows);
-
     }
 
     /*-----------------------------------------------------------------*/
-    // DETAILS MODAL
+    // FUNCTIONS, MODAL
     /*-----------------------------------------------------------------*/
+
+    const getModal = () => {
+        const modal = $('#myModal').show();
+        $('.close')[0].onclick = function () {
+            modal.hide();
+            $('#descriptive_list_info').empty();
+        };
+    }
 
     // get additional info about row when clicking info button 
     const getDetails = (e) => {
+        e.preventDefault();
         const $this = $(e.currentTarget);
         const id = $($this).closest('tr').data('id');
 
@@ -221,24 +199,15 @@ $(() => {
         if (SELECT_SEARCH === 'artist') {
             // EX: http://localhost/exam/api/albums/?artistId=2
             $.ajax({
-                method: 'GET', // setting the http method
                 url: `${ALBUM_ENDPOINT}/?artistId=${id}`,
-                dataType: 'json', // added data type
+                method: 'GET',
+                dataType: 'json',
                 success: (res) => {
-                    console.log('getDetails, artist - res', res);
-                    const modal = $('#myModal').show();
 
-                    $('.close')[0].onclick = function () {
-                        modal.hide();
-                        $('#descriptive_list_info').empty();
-                    };
+                    getModal();
 
                     let list_of_albums = res.map(Album => `<tr><td> - ${Album.Title}</td></tr><br>`);
-                    $('#descriptive_list_info').append(
-                        `
-                        <dd id='list_of_albums'>${list_of_albums}</dd>
-                        `
-                    );
+                    $('#descriptive_list_info').append(`<dd id='list_of_albums'>${list_of_albums}</dd>`);
 
                 },
                 error: (error) => {
@@ -251,31 +220,20 @@ $(() => {
         if (SELECT_SEARCH === 'album') {
             // EX: http://localhost/exam/api/albums/1/tracks
             $.ajax({
-                method: 'GET', // setting the http method
                 url: `${ALBUM_ENDPOINT}/${id}/tracks`,
-                dataType: 'json', // added data type
+                method: 'GET',
+                dataType: 'json',
                 success: (res) => {
-                    console.log('getDetails, album - res', res);
 
-                    // Get the modal ex. from: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_modal
-                    const modal = $('#myModal').show();
+                    getModal();
 
-                    // Get the <span> element that closes the modal. When the user clicks on <span> (x), close the modal
-                    $('.close')[0].onclick = function () {
-                        modal.hide();
-                        // empties modal
-                        $('#descriptive_list_info').empty();
-                    };
-                    // tracks
                     let list_of_tracks = res.tracks.map(tracks => `<tr><td> - ${tracks.trackTitle}</td></tr><br>`);
                     list_of_tracks = list_of_tracks.toString().replace(/,/g, "");
 
                     $('#descriptive_list_info').append(
-                        `
-                        <h2 id="trackTitle">${res.album.albumName}</h2><br>
+                        `<h2 id="trackTitle">${res.album.albumName}</h2><br>
                         <dt>Tracks</dt>
-                        <dd id='list_of_tracks'>${list_of_tracks}</dd>
-                        `
+                        <dd id='list_of_tracks'>${list_of_tracks}</dd>`
                     );
                 },
                 error: (error) => {
@@ -285,25 +243,16 @@ $(() => {
             });
         }
 
-        // EX: http://localhost/exam/api/tracks/id
         if (SELECT_SEARCH === 'track') {
-            console.log('getDetails, track');
+            // EX: http://localhost/exam/api/tracks/id
             $.ajax({
-                method: 'GET', // setting the http method
                 url: `${TRACK_ENDPOINT}/${id}`,
-                dataType: 'json', // added data type
+                method: 'GET',
+                dataType: 'json',
                 success: (res) => {
-                    console.log('getDetails - res', res);
 
-                    // Get the modal ex. from: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_modal
-                    const modal = $('#myModal').show();
+                    getModal();
 
-                    // Get the <span> element that closes the modal. When the user clicks on <span> (x), close the modal
-                    $('.close')[0].onclick = function () {
-                        modal.hide();
-                        // empties modal
-                        $('#descriptive_list_info').empty();
-                    };
                     $('#descriptive_list_info').append(
                         `
                         <form>
@@ -326,9 +275,7 @@ $(() => {
                             <dd id='trackTime'>- ${millisToMinutesAndSeconds(res.trackTime)} min.</dd>
                             <button id='addTrackToCart' type="submit" value="${res.trackId}">Add to cart</button><br>
                         </form>
-                        `
-                    );
-
+                        `);
                 },
                 error: (error) => {
                     console.log(error);
@@ -336,11 +283,7 @@ $(() => {
                 }
             });
         }
-
-
-
     };
-
 
     /*-----------------------------------------------------------------*/
     // ROW AND OPTION EVENT LISTENERS
@@ -354,7 +297,7 @@ $(() => {
     $('#search_option').on('change', (e) => {
         SELECT_SEARCH = $(e.currentTarget).val();
         $('#table_search_result').empty();
-        $('#searchbar').val('');
+        $('#search-bar').val('');
     });
 
 
@@ -370,7 +313,7 @@ $(() => {
             method: 'POST',
             url: `${CART_ENDPOINT}`,
             dataType: 'json',
-            data: {trackId: trackId},
+            data: { trackId: trackId },
             success: (res) => {
                 console.log('buy track - res', res);
                 alert('track added to cart');

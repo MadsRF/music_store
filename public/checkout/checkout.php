@@ -12,19 +12,20 @@
 </head>
 
 <body>
+    <!-- navbar -->
     <?php
     include_once __DIR__ . '/../navbar/navbar.php';
     echo navbar();
     ?>
 
+    <!-- content -->
     <main>
         <header>
             <h1>Check out</h1>
         </header><br>
         <section>
-            <!-- The Modal div -->
+            <!-- modal for invoice -->
             <div id="myModal" class="modal">
-                <!-- Modal content -->
                 <div class="modal-content">
                     <span class="close">&times;</span>
                     <dl id="invoice_info"></dl>
@@ -34,11 +35,12 @@
             <header>
                 <h2>alternative billing</h2>
             </header>
-
+            <!-- alternative billing -->
             <form id="billing_info" action="#"></form>
         </section>
     </main>
 
+    <!-- footer -->
     <?php
     include_once __DIR__ . '/../footer/footer.php';
     echo footer();

@@ -67,10 +67,11 @@ class Artists extends Endpoint
   protected function handleDelete()
   {
     if (!$this->adminAllowed()) return;
-
-    $albumId = intval($this->pathParams[$this::COLLECTION]);
-    $results = $this->artist->deleteArtist($albumId);
-    echo $results;
+    
+    $artistId = intval($this->pathParams[$this::COLLECTION]);
+    echo $artistId;
+    $results = $this->artist->deleteArtist($artistId);
+    echo json_encode($results);
     return;
   }
 }

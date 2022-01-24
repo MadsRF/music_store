@@ -9,12 +9,11 @@ $(() => {
     console.log('Navbar script is running');
 
     const logout = () => {
-        console.log('logout');
         // EX: http://localhost/exam/api/logout/
         $.ajax({
             url: LOGOUT_ENDPOINT,
-            type: 'GET', // setting the http method
-            dataType: 'json', // added data type
+            type: 'GET', 
+            dataType: 'json', 
             success: (res) => {
                 console.log(res);
                 window.location.href = HOME_ENDPOINT;
@@ -24,5 +23,6 @@ $(() => {
             }
         });
     }
+    // listener
     $(document).on('click', '#logout', logout);
 });

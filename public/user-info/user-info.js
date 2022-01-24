@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 import {
     GET_USER_INFO_ENDPOINT,
@@ -6,27 +6,25 @@ import {
 } from "../script.js";
 
 $(() => {
-    console.log('user-info script is running');
+    console.log('User-info script is running');
 
     $.ajax({
         url: `${GET_USER_INFO_ENDPOINT}`,
         type: 'GET',
         dataType: 'json',
         statusCode: {
-            500: (e) => {
-                console.log(e);
+            500: (error) => {
+                console.log(error);
                 alert('Problems retrieving data from API');
             },
-            404: (e) => {
-                console.log(e);
+            404: (error) => {
+                console.log(error);
                 alert('Page not found');
             },
         },
         success: (res) => {
-            console.log('res', res);
 
-            $('#user_info').append(
-                `
+            $('#user_info').append(`
                <label for="FirstName">First Name</label>
                 <input type="text" name="FirstName" id="FirstName" value="${res.FirstName}"/>
                 <label for="LastName">Last Name</label>
@@ -50,33 +48,22 @@ $(() => {
                 <label for="Email">Email</label>
                 <input type="text" name="Email" id="Email" value="${res.Email}"/>
           
-                <input type="hidden" name="CustomerId" id="CustomerId" value="${res.CustomerId}"/>
-               
-                <input type="submit" value="update" />
-                `
+                <input type="hidden" name="CustomerId" id="CustomerId" value="${res.CustomerId}"/>         
+                <input type="submit" value="update" />`
             );
-
-
-        }, error: (e) => {
-            alert('error', e);
+        }, error: (error) => {
+            console.log(error);
+            alert('Something went wrong when trying to get user-info. Try again later');
         }
     })
 
 
+    // Updating user-info
     $("#user_info").submit((e) => {
-        // prevents default actions from form
         e.preventDefault();
-        // get input value in form
         const $this = $(e.currentTarget);
+        const input = $this.serializeArray().reduce((obj, item) => ((obj[item.name] = item.value), obj), {});
 
-        // puts value into object
-        const input = $this.serializeArray()
-            .reduce((obj, item) => ((obj[item.name] = item.value), obj), {});
-
-        //input.CustomerId = parseInt(input.CustomerId);
-        console.log('input', input);
-
-        console.log('UPDATE_USER_INFO_ENDPOINT', UPDATE_USER_INFO_ENDPOINT);
         // EX: http://localhost/exam/api/customers
         $.ajax({
             url: UPDATE_USER_INFO_ENDPOINT,
@@ -84,12 +71,12 @@ $(() => {
             dataType: 'json',
             data: input,
             statusCode: {
-                500: (e) => {
-                    console.log(e);
+                500: (error) => {
+                    console.log(error);
                     alert('Problems retrieving data from API');
                 },
-                404: (e) => {
-                    console.log(e);
+                404: (error) => {
+                    console.log(error);
                     alert('Page not found');
                 },
                 401: (error) => {
@@ -98,7 +85,6 @@ $(() => {
                 },
             },
             success: (res) => {
-                console.log('POST res', res);
                 alert('Updated profile');
             },
             error: (error) => {

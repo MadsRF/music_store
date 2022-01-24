@@ -12,17 +12,20 @@
 </head>
 
 <body>
+    <!-- navbar -->
     <?php
     include_once __DIR__ . '/../navbar/navbar.php';
     echo navbar();
     ?>
 
+    <!-- main content -->
     <main>
         <header>
             <h1>Cart</h1>
         </header>
-        <section>
 
+        <section>
+            <!-- checks to see if user -->
             <?php if (isset($_SESSION["is_user"])) {
                 echo <<<HTML
                     <button id="checkout" type="submit">Checkout</button> 
@@ -33,11 +36,12 @@
                 HTML;
             }
             ?>
-
+            <!-- holds cart -->
             <table id="tracks_to_buy"></table>
         </section>
     </main>
 
+    <!-- footer -->
     <?php
     include_once __DIR__ . '/../footer/footer.php';
     echo footer();

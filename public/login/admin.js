@@ -9,42 +9,35 @@ $(() => {
     console.log('Admin login script is running');
 
     $("#admin_login_form").submit((e) => {
-        // prevents default actions from form
         e.preventDefault();
-        // get input value in form
         const $this = $(e.currentTarget);
 
-        // puts value into object
-        const input = $this.serializeArray()
-            .reduce((obj, item) => ((obj[item.name] = item.value), obj), {});
+        // puts value into object key, value
+        const input = $this.serializeArray().reduce((obj, item) => ((obj[item.name] = item.value), obj), {});
 
-        console.log('input', input);
-        console.log('LOGIN_USER_ENDPOINT', LOGIN_ADMIN_ENDPOINT);
-
-        // http://localhost/exam/api/login/customers/
+        // EX: http://localhost/exam/api/login/customers/
         $.ajax({
             url: LOGIN_ADMIN_ENDPOINT,
             type: "POST",
-            data: { username: input["username"], password: input["password"] },
-            //data: { username: "a", password: "admin" }, // TEMP
+            //data: { username: input["username"], password: input["password"] },
+            data: { username: "a", password: "admin" }, // TEMP
             statusCode: {
-                500: (e) => {
-                    console.log(e);
+                500: (error) => {
+                    console.log(error);
                     alert('Problems retrieving data from API');
                 },
-                404: (e) => {
-                    console.log(e);
+                404: (error) => {
+                    console.log(error);
                     alert('Page not found');
                 },
-                401: (e) => {
-                    console.log(e);
+                401: (error) => {
+                    console.log(error);
                     alert('Unauthorized');
                 },
             },
             success: (res) => {
-                console.log('res', res);
+                // redirect to home on success
                 window.location.href = HOME_ENDPOINT;
-
             },
             error: (error) => {
                 console.log(error);
@@ -52,9 +45,4 @@ $(() => {
             }
         });
     });
-
-
-
 })
-
-

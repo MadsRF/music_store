@@ -4,33 +4,26 @@ include_once __DIR__ . '/../../env.php';
 
 function navbar()
 {
-
     // ROUTES
     $homeRoute = Env::$INDEX_DIR . '/home';
-    //$logoutRoute = Env::$INDEX_DIR . '/logout';
+    $cartRoute = Env::$INDEX_DIR . '/cart';
     $signupRoute = Env::$INDEX_DIR . '/sign-up';
-
     $userLoginRoute = Env::$INDEX_DIR . '/login/user';
     $userInfoRoute = Env::$INDEX_DIR . '/user-info';
-    $cartRoute = Env::$INDEX_DIR . '/cart';
-
     $adminLoginRoute = Env::$INDEX_DIR . '/login/admin';
     $adminMusicRoute = Env::$INDEX_DIR . '/admin-music';
 
-    // MENU ITEMS
+    // MENU ITEMS NAMES
+    $cart = 'Cart';
     $home = 'Home';
     $signup = 'Signup';
     $logout = 'Logout';
-
     $user = 'User login';
     $admin = 'Admin login';
-
-    $cart = 'Cart';
     $userInfo = 'User Info';
     $adminMusic = 'Music Administration';
 
-
-    // if user is logged in
+    // USER MENU
     if (isset($_SESSION["is_user"])) {
         return
             <<<HTML
@@ -45,7 +38,7 @@ function navbar()
                 </header>
             HTML;
     }
-    // if admin is logged in
+    // ADMIN MENU
     elseif (isset($_SESSION["is_admin"])) {
         return
             <<<HTML
@@ -59,7 +52,9 @@ function navbar()
                     </ul>
                 </header>
             HTML;
-    } else {
+    }
+    // VISITOR I.E NOT LOGGED IN
+    else {
         return
             <<<HTML
                 <header>

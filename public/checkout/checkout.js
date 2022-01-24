@@ -1,38 +1,40 @@
 'use strict'
 
 import {
-     GET_USER_INFO_ENDPOINT,
-     CART_ENDPOINT,
-     INVOICE_ENDPOINT, 
-     HOME_ENDPOINT
+    GET_USER_INFO_ENDPOINT,
+    CART_ENDPOINT,
+    INVOICE_ENDPOINT,
+    HOME_ENDPOINT
 } from "../script.js";
 
 $(() => {
     console.log('Checkout script is running');
 
-
     /*-----------------------------------------------------------------*/
     // GET USER INFO AND CART FOR BILLING AND CREATE TABLE
     /*-----------------------------------------------------------------*/
 
+    // gets what in cart session
     $.ajax({
         url: `${CART_ENDPOINT}`,
+        type: 'GET',
         dataType: 'json',
         statusCode: {
-            500: (e) => {
-                console.log(e);
+            500: (error) => {
+                console.log(error);
                 alert('Problems retrieving data from API');
             },
-            404: (e) => {
-                console.log(e);
+            404: (error) => {
+                console.log(error);
                 alert('Page not found');
             },
         },
         success: (res) => {
-            console.log('get cart info - res', res);
+
             let trackList = [];
             trackList.push(res);
 
+            //gets user info for alternative billing
             $.ajax({
                 url: `${GET_USER_INFO_ENDPOINT}`,
                 type: 'GET',
@@ -78,9 +80,6 @@ $(() => {
         }
     });
 
-
-
-
     /*-----------------------------------------------------------------*/
     // EVENT LISTENERS
     /*-----------------------------------------------------------------*/
@@ -93,9 +92,6 @@ $(() => {
         const input = $this.serializeArray()
             .reduce((obj, item) => ((obj[item.name] = item.value), obj), {});
 
-        console.log('input', input);
-
-        console.log('INVOICE_ENDPOINT', INVOICE_ENDPOINT);
         // EX: http://localhost/exam/api/invoices
         $.ajax({
             url: INVOICE_ENDPOINT,
@@ -103,12 +99,12 @@ $(() => {
             dataType: 'json',
             data: input,
             statusCode: {
-                500: (e) => {
-                    console.log(e);
+                500: (error) => {
+                    console.log(error);
                     alert('Problems retrieving data from API');
                 },
-                404: (e) => {
-                    console.log(e);
+                404: (error) => {
+                    console.log(error);
                     alert('Page not found');
                 },
                 401: (error) => {
@@ -117,14 +113,11 @@ $(() => {
                 },
             },
             success: (res) => {
-                console.log('POST invoice res', res);
-
-                console.log('INVOICE_ENDPOINT', INVOICE_ENDPOINT + res.invoice_id);
 
                 // EX: http://localhost/exam/api/invoices/id
                 $.ajax({
-                    method: 'GET',
                     url: `${INVOICE_ENDPOINT}/${res.invoice_id}`,
+                    method: 'GET',
                     dataType: 'json',
                     success: (res) => {
                         console.log('GET invoice res', res);
@@ -137,8 +130,7 @@ $(() => {
                             window.location.href = HOME_ENDPOINT;
                         };
 
-                        $('#invoice_info').append(
-                            `
+                        $('#invoice_info').append(`
                                 <dt>Billing Address</dt>
                                 <dd id='BillingAddress'>- ${res.invoiceInfo.BillingAddress}</dd>
                                 <dt>Billing City</dt>
@@ -156,20 +148,14 @@ $(() => {
                                 <dt>InvoiceId</dt>
                                 <dd id='Invoice Id'>- ${res.invoiceInfo.InvoiceId}</dd>
                                 <dt>Total</dt>
-                                <dd id='Total'>- ${res.invoiceInfo.Total}</dd>
-                            `
+                                <dd id='Total'>- ${res.invoiceInfo.Total}</dd>`
                         );
 
                         // Loops through orders product name
                         let tracks = res.tracks.map(track => `<tr><td>${track.TrackName} - ${track.UnitPrice}</td></tr><br>`);
                         tracks = tracks.toString().replace(/,/g, "");
 
-                        $('#invoice_info').append(
-                            `
-                            <dt>Tracks</dt>
-                            <dd id='tracks'>${tracks}</dd>
-                            `
-                        );
+                        $('#invoice_info').append(`<dt>Tracks</dt><dd id='tracks'>${tracks}</dd>`);
 
                     },
                     error: (error) => {
@@ -177,8 +163,6 @@ $(() => {
                         alert('Something went wrong getting the invoice. try again later');
                     }
                 });
-
-
             },
             error: (error) => {
                 console.log(error);
@@ -187,32 +171,3 @@ $(() => {
         });
     });
 })
-
-
-/*                         // tracks
-                        let list_of_track_titles = res.tracks.map(tracks => `<td>${tracks.TrackName}</td>`);
-                        list_of_track_titles = list_of_track_titles.toString().replace(/,/g, "");
- 
-                        let list_of_track_prices = res.tracks.map(tracks => `<td>${tracks.UnitPrice}</td>`);
-                        list_of_track_prices = list_of_track_prices.toString().replace(/,/g, "");
- 
-                        console.log('list_of_tracks', list_of_track_titles);
- 
-                        $('#invoice_info').append(
-                            `
-                        <thead>
-                        <tr>
-                            <th>Track Title</th>
-                            <th>Track price</th>
-                        </tr>
-                        </thead>    
-                        <tbody>
-                        <tr>
-                            <td id='trackTitle'>${list_of_track_titles}</td>
-                            <td id='trackPrice'>${list_of_track_prices}</td>
-                        </tr>
-                        </tbody>
- 
- 
-                        `
-                        ); */
