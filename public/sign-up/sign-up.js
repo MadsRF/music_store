@@ -2,7 +2,7 @@
 
 import {
     SIGNUP_ENDPOINT,
-    LOGIN_USER_ENDPOINT
+    LOGIN_ENDPOINT
 } from "../script.js";
 
 $(() => {
@@ -38,7 +38,7 @@ $(() => {
                     },
                 },
                 success: (res) => {
-                    window.location.href = LOGIN_USER_ENDPOINT;
+                    window.location.href = LOGIN_ENDPOINT;
                     alert('User was created');
                 },
                 error: (error) => {

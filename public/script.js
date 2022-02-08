@@ -20,6 +20,7 @@ export const INVOICE_ENDPOINT = ROOT_URL + '/api/invoices';
 export const LOGOUT_ENDPOINT = ROOT_URL + '/api/logout';
 export const SIGNUP_ENDPOINT = ROOT_URL + '/api/customers';
 export const LOGIN_ADMIN_ENDPOINT = ROOT_URL + '/api/login/admin';
+export const LOGIN_ENDPOINT = ROOT_URL + '/login/user';
 export const LOGIN_USER_ENDPOINT = ROOT_URL + '/api/login/customers';
 
 // USER
