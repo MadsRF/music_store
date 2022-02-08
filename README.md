@@ -6,7 +6,7 @@ Project showcasing a prototype of a itunes look-a-like web application built usi
 # 📁 Collection: Albums 
 
 
-## End-point: http://localhost/exam/api/albums/
+## End-point: Get all: http://localhost/exam/api/albums/
 ### Method: GET
 >```
 >http://localhost/exam/api/albums/
@@ -14,7 +14,7 @@ Project showcasing a prototype of a itunes look-a-like web application built usi
 
 ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃
 
-## End-point: http://localhost/exam/api/albums/1
+## End-point: Get one: http://localhost/exam/api/albums/1
 ### Method: GET
 >```
 >http://localhost/exam/api/albums/1
@@ -22,15 +22,15 @@ Project showcasing a prototype of a itunes look-a-like web application built usi
 
 ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃
 
-## End-point: http://localhost/exam/api/albums/1/2
+## End-point: Get with tracks: http://localhost/exam/api/albums/1/2
 ### Method: GET
 >```
->http://localhost/exam/api/albums/1/whatever
+>http://localhost/exam/api/albums/355/whatever
 >```
 
 ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃
 
-## End-point: http://localhost/exam/api/albums/?artistId=2
+## End-point: Get all from artist: http://localhost/exam/api/albums/?artistId=2
 ### Method: GET
 >```
 >http://localhost/exam/api/albums/?artistId=2
@@ -44,10 +44,50 @@ Project showcasing a prototype of a itunes look-a-like web application built usi
 
 
 ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃
+
+## End-point: Create: http://localhost/exam/api/albums/
+### Method: POST
+>```
+>http://localhost/exam/api/albums/
+>```
+### Body formdata
+
+|Param|value|Type|
+|---|---|---|
+|ArtistId|287|text|
+|Title|albumname|text|
+
+
+
+⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃
+
+## End-point: Update: http://localhost/exam/api/artists/
+### Method: POST
+>```
+>http://localhost/exam/api/albums/
+>```
+### Body formdata
+
+|Param|value|Type|
+|---|---|---|
+|AlbumId|353|text|
+|Title|albumname2122|text|
+
+
+
+⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃
+
+## End-point: Delete: http://localhost/exam/api/albums/
+### Method: DELETE
+>```
+>http://localhost/exam/api/albums/351
+>```
+
+⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃
 # 📁 Collection: Artists 
 
 
-## End-point: http://localhost/exam/api/artists/
+## End-point: Get all: http://localhost/exam/api/artists/
 ### Method: GET
 >```
 >http://localhost/exam/api/artists/
@@ -55,17 +95,56 @@ Project showcasing a prototype of a itunes look-a-like web application built usi
 
 ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃
 
-## End-point: http://localhost/exam/api/artists/1
+## End-point: Get one: http://localhost/exam/api/artists/1
 ### Method: GET
 >```
->http://localhost/exam/api/artists/1
+>http://localhost/exam/api/artists/287
+>```
+
+⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃
+
+## End-point: Create: http://localhost/exam/api/artists/
+### Method: POST
+>```
+>http://localhost/exam/api/artists/
+>```
+### Body formdata
+
+|Param|value|Type|
+|---|---|---|
+|Name|tests|text|
+
+
+
+⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃
+
+## End-point: Update: http://localhost/exam/api/artists/
+### Method: POST
+>```
+>http://localhost/exam/api/artists/
+>```
+### Body formdata
+
+|Param|value|Type|
+|---|---|---|
+|Name|testss|text|
+|ArtistId|287|text|
+
+
+
+⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃
+
+## End-point: Delete: http://localhost/exam/api/artists?id=278
+### Method: DELETE
+>```
+>http://localhost/exam/api/artists/280
 >```
 
 ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃
 # 📁 Collection: Customers 
 
 
-## End-point: http://localhost/exam/api/customers/
+## End-point: Get one: http://localhost/exam/api/customers/
 ### Method: GET
 >```
 >http://localhost/exam/api/customers/1
@@ -73,7 +152,7 @@ Project showcasing a prototype of a itunes look-a-like web application built usi
 
 ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃
 
-## End-point: http://localhost/exam/api/customers
+## End-point: Create: http://localhost/exam/api/customers
 ### Method: POST
 >```
 >http://localhost/exam/api/customers
@@ -98,65 +177,67 @@ Project showcasing a prototype of a itunes look-a-like web application built usi
 
 
 ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃
+# 📁 Collection: Genres 
 
-## End-point: http://localhost/exam/api/customers
+# 📁 Collection: Invoices 
+
+
+## End-point: Get one: http://localhost/exam/api/invoices/
+### Method: GET
+>```
+>http://localhost/exam/api/invoices/426
+>```
+
+⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃
+
+## End-point: Create: http://localhost/exam/api/invoices
 ### Method: POST
 >```
->http://localhost/exam/api/customers
+>http://localhost/exam/api/invoices
 >```
 ### Body formdata
 
 |Param|value|Type|
 |---|---|---|
-|LastName|Gonçalves|default|
-|FirstName|Luís|default|
-|Company|Embraer - Empresa Brasileira de Aeronáutica S.A.|default|
-|City|São José dos Campos|default|
-|Address|Av. Brigadeiro Faria Lima, 2170|default|
-|State|SPssd|default|
-|Country|Brazil|default|
-|PostalCode|12227-000|default|
-|Phone|+55 (12) 3923-5555|default|
-|Fax|+55 (12) 3923-5566|default|
-|Email|luisg@embraer.com.br|default|
-|CustomerId|1|text|
+|address|thisvej|text|
+|city|copenhagen|text|
+|state|sjaalland|text|
+|country|denmark|text|
+|postalCode|2400|text|
+|customerId|1|text|
+|trackIds|1,2|text|
 
 
-
-⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃
-# 📁 Collection: Genres 
-
-
-## End-point: http://localhost/exam/api/genres/
-### Method: GET
->```
->http://localhost/exam/api/genres/
->```
-
-⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃
-# 📁 Collection: Invoices 
-
-
-## End-point: http://localhost/exam/api/invoices/
-### Method: GET
->```
->http://localhost/exam/api/invoices/1
->```
 
 ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃
 # 📁 Collection: Searches 
 
 
-## End-point: http://localhost/exam/api/searches/?id=1
+## End-point: Get all: http://localhost/exam/api/searches/?id=1
 ### Method: GET
 >```
->http://localhost/exam/api/searches/?val=1
+>http://localhost/exam/api/searches/?val=ac
 >```
 ### Query Params
 
 |Param|value|
 |---|---|
-|val|1|
+|val|ac|
+
+
+
+⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃
+
+## End-point: Get all: http://localhost/exam/api/searches/?val=
+### Method: GET
+>```
+>http://localhost/exam/api/searches/?val=AC/DC
+>```
+### Query Params
+
+|Param|value|
+|---|---|
+|val|AC/DC|
 
 
 
@@ -164,7 +245,7 @@ Project showcasing a prototype of a itunes look-a-like web application built usi
 # 📁 Collection: Tracks 
 
 
-## End-point: http://localhost/exam/api/tracks
+## End-point: Get all: http://localhost/exam/api/tracks
 ### Method: GET
 >```
 >http://localhost/exam/api/tracks
@@ -178,15 +259,15 @@ Project showcasing a prototype of a itunes look-a-like web application built usi
 
 ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃
 
-## End-point: http://localhost/exam/api/tracks/?id=1
+## End-point: Get one: http://localhost/exam/api/tracks/?id=1
 ### Method: GET
 >```
->http://localhost/exam/api/tracks/1
+>http://localhost/exam/api/tracks/3505
 >```
 
 ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃
 
-## End-point: http://localhost/exam/api/tracks/?id=1,2,3,4
+## End-point: Get list: http://localhost/exam/api/tracks/?id=1,2,3,4
 ### Method: GET
 >```
 >http://localhost/exam/api/tracks/?id=1,2,3,4
@@ -202,10 +283,63 @@ Project showcasing a prototype of a itunes look-a-like web application built usi
 
 
 ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃
+
+## End-point: Create: http://localhost/exam/api/tracks/
+### Method: POST
+>```
+>http://localhost/exam/api/tracks/
+>```
+### Body formdata
+
+|Param|value|Type|
+|---|---|---|
+|Name|test2322|text|
+|AlbumId|355|text|
+|MediaTypeId|1|text|
+|GenreId|2|text|
+|Composer||text|
+|Milliseconds|100000|text|
+|Bytes|1|text|
+|UnitPrice|99|text|
+
+
+
+⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃
+
+## End-point: Update: http://localhost/exam/api/tracks/
+### Method: POST
+>```
+>http://localhost/exam/api/tracks/
+>```
+### Body formdata
+
+|Param|value|Type|
+|---|---|---|
+|Name|test2322|text|
+|AlbumId|355|text|
+|MediaTypeId|1|text|
+|GenreId|2|text|
+|Composer||text|
+|Milliseconds|100000|text|
+|Bytes|1|text|
+|UnitPrice|99|text|
+|TrackId|3505|text|
+
+
+
+⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃
+
+## End-point: Delete: http://localhost/exam/api/tracks/
+### Method: DELETE
+>```
+>http://localhost/exam/api/tracks/3505
+>```
+
+⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃
 # 📁 Collection: Login 
 
 
-## End-point: http://localhost/exam/api/login/customers/
+## End-point: Customer: http://localhost/exam/api/login/customers/
 ### Method: POST
 >```
 >http://localhost/exam/api/login/customers/
@@ -221,7 +355,7 @@ Project showcasing a prototype of a itunes look-a-like web application built usi
 
 ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃
 
-## End-point: http://localhost/exam/api/login/admin/
+## End-point: Admin: http://localhost/exam/api/login/admin/
 ### Method: POST
 >```
 >http://localhost/exam/api/login/admin/
@@ -243,6 +377,38 @@ Project showcasing a prototype of a itunes look-a-like web application built usi
 ### Method: GET
 >```
 >http://localhost/exam/api/logout/
+>```
+
+⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃
+# 📁 Collection: Cart 
+
+
+## End-point: http://localhost/exam/api/cart
+### Method: POST
+>```
+>http://localhost/exam/api/cart
+>```
+### Body formdata
+
+|Param|value|Type|
+|---|---|---|
+|trackId|22|text|
+
+
+### Query Params
+
+|Param|value|
+|---|---|
+|trackId|1|
+
+
+
+⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃
+
+## End-point: http://localhost/exam/api/cart
+### Method: GET
+>```
+>http://localhost/exam/api/cart
 >```
 
 ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃ ⁃

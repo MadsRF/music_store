@@ -24,6 +24,7 @@ ul {
     margin: 0;
     padding: 0;
     overflow: hidden;
+    width: 100%;
     /*colors*/
     background-color: #333;
 }
@@ -198,7 +199,7 @@ table tr:hover {
 
 @media screen and (min-width: 1024px) {
     body {
-        background-color: black;
+        background-color: darkslategray;
     }
 
     table {

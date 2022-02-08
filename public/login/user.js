@@ -18,8 +18,8 @@ $(() => {
         $.ajax({
             url: LOGIN_USER_ENDPOINT,
             type: "POST",
-            //data: { username: input["username"], password: input["password"] },
-            data: { username: "luisg@embraer.com.br", password: "customer" }, //TEMP
+            data: { username: input["username"], password: input["password"] },
+            // data: { username: "luisg@embraer.com.br", password: "customer" }, // TEMP TEST
             statusCode: {
                 500: (error) => {
                     console.log(error);

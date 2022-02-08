@@ -19,8 +19,8 @@ $(() => {
         $.ajax({
             url: LOGIN_ADMIN_ENDPOINT,
             type: "POST",
-            //data: { username: input["username"], password: input["password"] },
-            data: { username: "a", password: "admin" }, // TEMP
+            data: { username: input["username"], password: input["password"] },
+            // data: { username: "a", password: "admin" }, // TEMP TEST
             statusCode: {
                 500: (error) => {
                     console.log(error);

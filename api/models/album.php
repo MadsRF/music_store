@@ -99,7 +99,7 @@ class Album extends MusicDB
   {
     $query = <<< SQL
       UPDATE `album`
-      SET `Title` = :Title, `ArtistId` = :ArtistId
+      SET `Title` = :Title
       WHERE `AlbumId` = :AlbumId
     SQL;
 
